@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>숫자 관련 input 요소</h1>
+    <form action="" method="get">
+        <div>
+            <label for="number">number</label>
+            <input 
+            type="number" 
+            name="number" 
+            id="number" 
+            placeholder="숫자 입력" 
+            max="100"
+            min="0"
+            step="5"
+            />
+        </div>
+        <div>
+            <label for="range">range</label>
+            <input 
+            type="range" 
+            name="range" 
+            id="range" 
+            max="100"
+            min="0"
+            step="20"
+            />
+        </div> 
+        <div>
+            <label for="date">날짜</label>
+            <input 
+            type="date" 
+            name="date" 
+            id="date"
+            min="2023-01-01" 
+            max="2025-12-31"
+            />
+            <input 
+            type="week" 
+            name="date" 
+            id="date"
+            min="2023-01-01" 
+            max="2025-12-31"
+            />
+        </div>
+        <button type="submit">제출</button>
+    </form>
+</body>
+</html>

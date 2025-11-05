@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>상품 주문서</h1>
+
+    <form action="" method="get">
+      <fieldset>
+        <legend>개인 정보</legend>
+        <ul>
+          <div>
+            <li>
+              <label for="name">이름</label>
+              <input type="text" name="name" id="name" placeholder="여백없이 입력" />
+            </li>
+          </div>
+          <div>
+            <li>
+              <label for="tel">연락처</label>
+              <input type="tel" name="tel" id="tel" pattern="\d{3}-\d{4}-\d{4}" placeholder="연락가능한 번호" />
+            </li>
+          </div>
+        </ul>
+      </fieldset>
+
+      <fieldset>
+        <legend>배송지 정보</legend>
+        <ul>
+          <div>
+            <li>
+              <label for="address">주소</label>
+              <input type="text" name="address" id="address" size="40" />
+            </li>
+          </div>
+          <div>
+            <li>
+              <label for="tel">전화번호</label>
+              <input type="tel" name="tel0" id="tel" pattern="\d{3}-\d{4}-\d{4}" />
+            </li>
+          </div>
+          <div>
+            <li>
+              <label for="memo">메모</label>
+              <textarea name="memo" id="memo" rows="5"></textarea>
+            </li>
+          </div>
+        </ul>
+      </fieldset>
+
+      <fieldset>
+        <legend>주문 정보</legend>
+        <ul>
+          <div>
+            <li>
+              <input type="checkbox" name="coffee" id="antigua" />
+              <label for="antigua">과테말라 안티구아 (100g)</label>
+              <input type="number" name="number" id="number" value="0" min="0" max="5" />
+              <label for="number">개</label>
+            </li>
+          </div>
+          <div>
+            <li>
+              <input type="checkbox" name="coffee" id="mandelling" />
+              <label for="mandelling">인도네시아 만델링 (100g)</label>
+              <input type="number" name="number" id="number" value="0" min="0" max="5" />
+              <label for="number">개</label>
+            </li>
+          </div>
+          <div>
+            <li>
+              <input type="checkbox" name="coffee" id="doda" />
+              <label for="doda">탐라는도다(블랜딩) (100g)</label>
+              <input type="number" name="number" id="number" value="0" min="0" max="5" />
+              <label for="number">개</label>
+            </li>
+          </div>
+        </ul>
+      </fieldset>
+
+      <button type="submit">주문하기</button>
+      <button type="reset">다시 작성</button>
+    </form>
+  </body>
+</html>

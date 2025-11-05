@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- ?fruit=사과&fruit=포도&vege=on
+     check 한 것들 중, checkbox에서 value가 기입되어있으면 그 값이 표시된다. 그래서 체크 요소가 들어간 checkbox나 radio는 반드시 value를 넣어야 한다. 
+     -->
+    <h1>input 요소 공통 속성</h1>
+    <form action="" method="get">
+        <div>
+            <label for="name">이름</label>
+            <input type="text" name="name" id="name" value="홍길동"/>
+            <!-- 처음에 나올 단어를 지정할 수 있다. -->
+        </div>
+        <div>
+            <label for="id">autofocus</label>
+            <input type="text" name="id" id="id" autofocus/>
+        </div>
+        <div>
+            <label for="ip">readonly</label>
+            <input type="text" name="ip" id="ip" readonly value="121.10.152.11"/>
+            <!-- 읽기 전용, 수정 불가-->
+        </div>
+        <div>
+            <label for="fruit">required</label>
+            <input type="text" name="fruit" id="fruit" required/>
+            <!-- 필수 입력칸 -->
+        </div>
+        <button type="submit">제출</button>
+    </form>
+    
+</body>
+</html>
