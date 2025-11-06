@@ -1,0 +1,18 @@
+ul {
+  list-style: disc;
+}
+
+ul > li:first-child {
+  list-style: "▣";
+}
+
+ol{
+    /* upper-alpha
+    upper-roman 
+    */
+    list-style: decimal;
+}
+
+ul{
+    list-style: none;
+}

@@ -1,0 +1,32 @@
+
+[target] {
+    text-decoration: none;
+}
+[target="_blank"] {
+    color: yellowgreen;
+}
+
+/* Success, Daanger : 글자 굵게, 버튼 테두리 둥글게, 안쪽 여백 */
+/* 1. making a group 
+.btn-success, 
+.btn-danger {
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 10px;
+} */
+
+/* [class^="btn"]{
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 10px;
+} */
+[class|="btn"]{
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+[class$="test"]{
+    color: brown;
+    font-weight: bold;
+}

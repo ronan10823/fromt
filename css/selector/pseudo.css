@@ -1,0 +1,75 @@
+/* 6. 자손 결합자(descendent selector) */
+.outer li {
+  color: olivedrab;
+}
+
+/* 7. 자식 결합자: > */
+.outer > li {
+  color: dodgerblue;
+}
+
+.outer > li li {
+  text-decoration: underline;
+}
+
+/* 8. 형제 결합자 : ~ , +  
+    ~: 뒤따르는 모든 요소들
+    +: 다음 요소만 (바로 다음, 하나만) */
+.starter ~ li {
+  font-style: italic;
+}
+
+.starter + li {
+  font-weight: bold;
+}
+
+/* 9. 가상 클래스 : 특정 상황을 가정하고 이름을 붙임
+    : fist-child
+    : last-child
+    : nth-child(n): n번째에 해당하는 요소 선택
+    : nth-child(2n): 짝수에 해당하는 요소 선택
+    : nth-child(even): 짝수에 해당하는 요소 선택
+    : nth-child(2n+1): 홀수에 해당하는 요소 선택
+    : nth-child(odd): 홀수에 해당하는 요소 선택
+    : hover : 마우스가 오버될 때
+*/
+ol li:first-child,
+ol li:last-child {
+  color: yellowgreen;
+}
+
+.outer > li:not(:last-child) {
+  text-decoration: line-through;
+} 
+  
+ol li:nth-child(3){
+  font-weight: bold;
+  color: deeppink;
+}
+
+ol li:nth-child(2n+1){
+  background-color: antiquewhite;
+}
+
+li:hover{
+  font-weight: bold;
+  color: blue;
+}
+
+/* div p a 이렇게 쓸 수도 있지만, 자손의 개념으로 a만 작성해도 된다.  */
+div a:link {
+  text-decoration: none;
+  color: black;
+}
+div a:active {
+  color: black;
+}
+div a:visited {
+  color: black;
+}
+div :hover{
+  text-decoration: underline;
+}
+
+
+

@@ -1,0 +1,20 @@
+span{
+  background-color: slateblue;
+  display: inline-block;
+  /* display: inline-block;
+  width: 100px; 
+  height: 150px; */
+  margin: 20px;
+  padding: 20px;
+}
+div{
+  background-color: tomato;
+  /* display: inline-block;
+  width: 100px; 
+  height: 150px; */
+  margin: 20px;
+  padding: 20px;
+}
+div:nth-child(even){
+  background-color: orangered;
+}

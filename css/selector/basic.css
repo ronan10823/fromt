@@ -1,35 +1,41 @@
 /* 1. Select every elements : *   */
 * {
-    font-weight: bold;
-    color: darkorange;
+  font-weight: bold;
+  color: darkorange;
 }
 
 /* 2. Tag selector */
 p {
-    color: olivedrab;
+  color: olivedrab;
 }
-
 
 /* 3. Calss selector */
 /* .blue{
 color: lightblue;
 } */
 
-p.blue{
-    color: lightblue;
+p.blue {
+  color: lightblue;
 }
 
-.blue.dark{
-    /* separatelty call blue and black */
-    color: mediumblue;
+.blue.dark {
+  /* separatelty call blue and black */
+  color: mediumblue;
 }
 
-.blue.dark{
-    /* separatelty call blue and black */
-    color: darkblue;
+.blue.dark {
+  /* separatelty call blue and black */
+  color: darkblue;
 }
 
 /* 4. id selector */
 #red {
-    color: tomato;
+  color: tomato;
+}
+
+/* 5. Group selector */
+span,
+.dark,
+#red {
+text-decoration: underline;
 }

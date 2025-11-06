@@ -1,0 +1,33 @@
+p{
+    /* normal(default), italic, oblique */
+    font-style: normal;
+    /* 100 - 900, bold, normal */
+    font-weight: bold;
+    font-size: 1.2em;
+    /* 글꼴 : 설치된 글꼴 */
+    font-family: "Courier New", Courier, monospace;
+}
+
+p.left{
+    text-align: left;
+    text-decoration: wavy underline tomato;
+}
+p.right{
+    text-align: end;
+}
+p.center{
+    text-align: center;
+    text-decoration: dotted underline overline tomato 5px;
+}
+p.justify{
+    text-align: justify;
+}
+p.transform{
+    text-transform: lowercase;
+}
+p.shadow{
+    text-shadow: 0 1px red, 0 -1px red, 1px 0 red, -1px 0 red;
+}
+p.indent{
+    text-indent: -50px;
+}

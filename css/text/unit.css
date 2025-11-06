@@ -1,0 +1,18 @@
+/* 
+    css 단위
+    1) px 고정값
+    2) em: em단위가 쓰인 곳의 폰트 크기 배수
+*/
+
+html {
+  font-size: 14px;
+}
+div {
+  font-size: 2em;
+}
+div.p {
+  font-size: 2rem;
+}
+p {
+  width: 80%;
+}

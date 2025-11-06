@@ -1,0 +1,9 @@
+.letter{
+    /* letter-spacing: -2px; */
+    font-size: 14px;
+    line-height: 1.2em;
+}
+
+.word{
+    word-spacing: -2px;
+}
