@@ -1,0 +1,46 @@
+/* slide
+border
+width 800 height 300 
+가운데 정렬
+안쪽 여백 10
+
+background-image: url(../images/dish.jpg);
+background-size:50%;
+*/
+.slide{
+    border: 2px solid black;
+    width: 800px;
+    height: 500px;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+}
+
+.slide img{
+    width: 300px;
+    height: 200px;
+    float: left;
+}
+/* 
+    a 배경색 #333
+    줄높이 50px
+    글자색 흰색
+
+    background-color:black;
+    button>< 이거 넣는거 아닐까?
+ */
+
+.controls a{
+    background-color: #333;
+    line-height: 50px;
+    color: white;
+    position:absolute;
+    top: calc(50% - 25px);
+    white-space: nowrap;
+}
+.prev{
+    right: 100%;
+}
+.next{
+    left:100%;
+}

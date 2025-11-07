@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    display: flex;
+    height: 700px;
+    border: a2px double darkcyan;
+    flex-direction: column;
+    /* flex-direction: row;
+    flex-wrap: nowrap; */
+    justify-content: space-evenly;
+}
+
+.container div{
+    width: 200px;
+    height: 100px;
+    border: 2px dashed black;
+}
+
+.container div:first-child{
+    background-color: beige;
+}
+
+.container div:nth-child(2){
+    background-color: violet;
+}
+.container div:nth-child(3){
+    background-color: indianred;
+}
+.container div:nth-child(4){
+    background-color: darkcyan ;
+}
+.container div:nth-child(5){
+    background-color: turquoise;
+}
+
+.container div:last-child{
+    background-color: indigo;
+}

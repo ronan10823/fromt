@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    border: 4px solid black;
+    display: flex;
+}
+
+.container .item {
+    height: 100px;
+    background-color: tomato;
+    border: 4px dashed red;
+    border-radius: 10px;
+    white-space: nowrap;
+    /* flex: 1;   */
+    /* 증가 감소 기본값 */
+    /* 1 1 0 */
+    /* flex: 0 1 0; */
+    /* flex-basis: 200px; flex item들의 시작 크기를 지정 */
+    /* flex-grow: 1;
+    flex-shrink: 1; */
+    flex: 1 1 auto;
+}

@@ -1,0 +1,9 @@
+.section{
+    height: 200px;
+    border: 4px dashed lightgray;
+}
+
+.section h1{
+    position: sticky;
+    top: 0;
+}
