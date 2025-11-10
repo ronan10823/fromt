@@ -1,0 +1,24 @@
+.container {
+    display: flex;
+}
+
+.container div{
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+}
+
+.container div:first-child{
+    background-color: aquamarine;
+}
+.container div:nth-child(2){
+    background-color: azure;
+    display: none;
+}
+.container div:nth-child(3){
+    background-color: darkgray;
+    visibility: hidden;
+}
+.container div:last-child{
+    background-color: burlywood;
+}

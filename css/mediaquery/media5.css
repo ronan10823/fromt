@@ -1,0 +1,109 @@
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* header h1 : font size 3em, center alignce */
+header h1 {
+  font-size: 3em;
+  text-align: center;
+}
+
+/* all h2 in menus 
+    padding : 5px
+    font-size: 2em 
+    font-color: white
+*/
+
+#menus > div {
+  height: 400px;
+  position: relative;
+}
+
+#menus h2 {
+  padding: 5px;
+  font-size: 2em;
+  color: white;
+  text-shadow: 3px 3px 5px black;
+  position: absolute;
+  right: 3%;
+  bottom: 10px;
+}
+
+/* put dish1.jpg in menu1 */
+/* put dish2.jpg in menu2 */
+/* put dish3.jpg in menu3 */
+/* put dish4.jpg in menu4 */
+/* put dish5.jpg in menu5 */
+#menu1 {
+  background: url(../images/dish1.jpg) no-repeat center;
+  background-size: cover;
+}
+#menu2 {
+  background: url(../images/dish2.jpg) no-repeat center;
+  background-size: cover;
+}
+#menu3 {
+  background: url(../images/dish3.jpg) no-repeat center;
+  background-size: cover;
+}
+#menu4 {
+  background: url(../images/dish4.jpg) no-repeat center;
+  background-size: cover;
+}
+#menu5 {
+  background: url(../images/dish5.jpg) no-repeat center;
+  background-size: cover;
+}
+
+/* footer
+    font-size : 1.2em
+    font-color #eee
+    center alignce
+    line-height: 200px
+*/
+footer {
+  font-size: 1.2em;
+  color: #eee;
+  background-color: black;
+  text-align: center;
+  height: 200px;
+}
+
+@media screen and (min-width: 768px) {
+  #menus { 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  #menu1,
+  #menu2,
+  #menu3,
+  #menu4 {
+    width: 49%;
+    margin-bottom: 1%;
+  }
+  #menu5 {
+    margin-left: 0%;
+    width: 100%;
+    flex: initial;
+    /* margin-left 0 + width 100% , initial :  기본값으로 되돌아가세요.  */
+  }
+}
+
+@media screen and (min-width: 992px) {
+  #menu1,
+  #menu2,
+  #menu3,
+  #menu4,
+  #menu5 {
+    width: 33%;
+  }
+  /* flex-frow, flex-shrink 의 개념 */
+  #menu5 {
+    /* flex: 1; 1 1 0 */
+    flex: 2 2 0; /*증가 감소 기본값(늘리고 줄일 때 사용할 수 있는, 여백 포함 미포함 여부*/
+    margin-left: 0.5%;
+  }
+}
