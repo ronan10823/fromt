@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+}
+
+#wrapper {
+  display: grid;
+  gap: 12px;
+}
+
+#wrapper > * {
+  padding: 1em;
+  font-size: 1.2em;
+  color: royalblue;
+  font-weight: bold;
+  background-color: lightblue;
+}
+
+header {
+  min-width: 80px;
+  position: relative;
+}
+#menu {
+  line-height: 64px;
+  color: #333;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  line-height: 64px;
+  cursor: pointer;
+}
+nav ul {
+  padding-left: 0.5em;
+}
+nav li {
+  display: inline-block;
+  margin-right: 1em;
+  color: #333;
+}
+main div {
+  margin: 1em;
+  padding: 1em;
+  height: 67vh;
+  color: #333;
+  font-weight: normal;
+  background-color: yellow;
+}
+footer {
+  height: 200px;
+}
+
+@media screen and (max-width: 768px) {
+  /* nav 숨기기 */
+  nav {
+    display: none;
+  }
+
+  /* 메뉴 글자에 마우스를 올리면 nav 보여주기(오른쪽 정렬) */
+  #menu:hover + nav {
+    display: inherit; /* 원래 가지고 있던 속성으로 되돌아가라. > ? */
+    text-align: right;
+  }
+
+  #menu:hover + nav li {
+    display: block;
+    padding: 0.6em;
+  }
+}
+@media screen and (min-width: 769px) {
+  /* menu를 안 보이게 하고 싶음 = hiding */
+  #menu {
+    display: none;
+  }
+
+  /* grid - header: 100%, aside column: 200px, contents column: 1fr */
+  /* parents grid
+    컬럼 지정: grid-tempalte-colums */
+  #wrapper {
+    grid-template-columns: 200px 1fr;
+  }
+  /* child grid
+    grid-column  */
+  header {
+    grid-column: 1 / -1;
+  }
+  footer {
+    grid-column: 1 / -1;
+  }
+}
