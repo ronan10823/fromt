@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button type="button">뒤로 가기</button>
+    <button type="button">앞으로 가기</button>
+    <button type="button">지정한 만큼</button>
+    <script>
+      // document.getElementById();
+      // document.querySelector();
+      // document.querySelectorAll();
+
+      const btns = document.querySelectorAll("[type='button']");
+      //   console.log(btns);
+      //   console.log(btns[0]);
+      //   console.log(btns[1]);
+      //   console.log(btns[2]);
+
+      btns[0].addEventListener("click", () => {
+        history.back();
+      });
+
+      btns[1].addEventListener("click", () => {
+        history.forward();
+      });
+
+      btns[2].addEventListener("click", () => {
+        history.go(-2);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="header" class="header"><i>헤더 요소</i></h1>
+    <ul>
+      <li class="item">목록1</li>
+      <li class="item">목록2</li>
+      <li class="item">목록3</li>
+      <li class="item">목록4</li>
+    </ul>
+    <button type="button">변경</button>
+    <script>
+      // document 요소 찾기 연습
+      // document.getElementById();
+      // document.querySelector();
+      // document.querySelectorAll();
+
+      //   const h1 = document.getElementById("header");
+      const h1 = document.querySelector("#header");
+      console.log(h1);
+      console.log(h1.innerHTML); // 내용 헤더 요소
+      console.log(h1.innerText); // 내용 헤더 요소
+      console.log(h1.textContent); // 내용 헤더 요소
+
+      console.log(h1.id); // id 속성
+      console.log(h1.class); // class 속성
+      console.log(h1.classList); // class 속성
+
+      // text 값 변경
+      //   h1.textContent = "점심시간";
+      //   // 태그 포함 시 의미가 있음
+      //   h1.innerHTML = "<i>점심시간</i>";
+
+      // 변경 버튼 클릭 시 h1의 텍스트 변경
+      const btn = document.querySelector("button");
+      // 클릭 => 감시(이벤트 리스너)
+
+      //   const oneclick = () => {}
+      //   btn.addEventListener("click", function(){});
+      btn.addEventListener("click", (e) => {
+        // console.log("이벤트 대상 ", e.target);
+        h1.innerHTML = "<i>점심시간</i>";
+      });
+      //   btn.addEventListener("click", oneclick);
+
+      // li 첫 번째 요소 찾기
+      //   const li = document.querySelector("li"); // tag name
+      const li = document.querySelector(".item"); // class name
+      console.log(li);
+
+      // 모든 li 찾기
+      const lis = document.querySelectorAll(".item");
+      lis.forEach((li) => {
+        console.log(li);
+      }); // console에서 확인 가능
+    </script>
+  </body>
+</html>

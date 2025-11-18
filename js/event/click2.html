@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      table {
+        width: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="outside">
+      <tr>
+        <td id="t1">one</td>
+      </tr>
+      <tr>
+        <td id="t2">two</td>
+      </tr>
+    </table>
+    <script>
+      // table 클릭할 때마다 two <=> three 변경되면서 나오기
+      // innerText or textContent
+
+      const table = document.querySelector("#outside");
+      table.addEventListener("click", () => {
+        // t2요소 찾기
+        const t2 = document.querySelector("#t2");
+        t2.innerHTML = t2.innerHTML === "two" ? "three" : "two";
+      });
+
+      // btn.addEventListener("click", ()=>{ t1.innerHTML = "two"})
+      //   const btns = document.querySelectorAll(".td")
+      //   btns[0].addEventListener("click", (e)=> { td.innerHTML = "two" } )
+      //   btns[1].addEventListener("click", (e)=> { td.innerHTML = "three" } )
+    </script>
+  </body>
+</html>

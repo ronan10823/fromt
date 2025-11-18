@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>시작</div>
+    <ul>
+      <li><b>항목</b></li>
+    </ul>
+    <div>끝</div>
+    <script>
+      // body 안에 모든 자식 요소 출력
+      for (let i = 0; i < document.body.childNodes.length; i++) {
+        // 모든 자식 요소 개수를 가짐, 접근 O
+        console.log(document.body.childNodes[i]);
+      } // 왜 1을 넣은 거랑 i 를 넣은 거랑 이렇게 값의 차이가 많이 날까?
+
+      console.log("document.body.parentNode ", document.body.parentNode);
+      console.log("document.body.parentElement ", document.body.parentElement);
+      console.log("document.body.firstChild ", document.body.firstChild); // 전체 공백을 포함한 첫 번째 자식 -> 공백 
+      console.log("document.body.firstElementChild ", document.body.firstElementChild); // 공백 제외한 태그 요소의 첫번째 자식 -> div> 시작
+      console.log("document.body.lastChild ", document.body.lastChild); // 공백 포함한 전체의 마지막 자식 
+      console.log("document.body.lastElementChild ", document.body.lastElementChild);  // 공백 제외한 태그 요소의 마지막 자식
+      console.log("document.body.nextSibling ", document.body.nextSibling); // 
+      console.log("document.body.nextElementSibling ", document.body.nextElementSibling);
+      console.log("document.body.previousSibling ", document.body.previousSibling);
+      console.log("document.body.previousElementSibling ", document.body.previousElementSibling);
+    </script>
+  </body>
+</html>
