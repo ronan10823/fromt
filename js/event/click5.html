@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <style>
+      span {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <span class="navbar-brand">JSShop</span>
+        <span class="badge bg-dark">Dark 🔄️</span>
+      </div>
+    </nav>
+    <script>
+      const nav = document.querySelector(".navbar");
+
+      nav.addEventListener("click", (e) => {
+        const span = e.target;
+        // Dark 🔄️클릭 시
+        // bg-light -> bg-dark 변경 : 클래스 이름 변경(classList.js 참고)
+        // 클래스 이름을 변경하려면, 클래스명인 nav를 가져와야 한다.
+        // 어떻게 nav를 가져와야 할까?
+
+        if (span.classList.contains("badge")) {
+          if (span.textContent.includes("Dark")) {
+            e.currentTarget.classList.replace("bg-light", "bg-dark");
+            span.classList.replace("bg-dark", "bg-light");
+
+            // class name
+            span.classList.add("text-warning");
+            span.previousElementSibling.classList.add("text-warning");
+            span.textContent = "Light 🔄️";
+          } else {
+            e.currentTarget.classList.replace("bg-dark", "bg-light");
+            span.classList.replace("bg-light", "bg-dark");
+
+            // class name
+            span.classList.remove("text-warning");
+            span.previousElementSibling.classList.remove("text-warning");
+            span.textContent = "Dark 🔄️";
+          }
+        }
+      });
+
+      // e.currentTarget.classList.replace("bg-light", "bg-dark");
+      // // bg-dark -> bg-light
+      // span.classList.replace("bg-dark", "bg-light");
+      // // 글자색 노란색
+      // // span.style.color = "yellow";
+      // // span.previousElementSibling.style.color = "yellow";
+
+      // // class 명 이용 시
+      // span.classList.add("text-warning");
+      // span.previousElementSibling.classList.add("text-warning");
+      // // Light 🔄️로 변경
+      // span.textContent = "Light 🔄️";
+      // });
+
+      // my temptation
+      // const nav = document.querySelector("nav");
+      // const bg-light = document.querySelector(".bg-light")
+      //   console.log(nav.classList);
+      //   nav.classList("bg-light", "bg-dark")
+
+      // Light 🔄️클릭 시
+      // bg-dark -> bg-light 변경
+      // bg-light -> bg-dark
+      // 글자색 검정
+      // Dark 🔄️로 변경
+    </script>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .text-danger {
+        color: red;
+        font-size: 12px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="" method="get">
+      <div>
+        <label for="name">이름</label>
+        <input type="text" name="name" id="name" />
+        <div class="text-danger">이름을 입력해 주세요</div>
+      </div>
+      <div>
+        <label for="fruits">과일선택</label>
+        <input type="checkbox" name="fruits" id="" value="사과" />사과
+        <input type="checkbox" name="fruits" id="" value="포도" />포도
+        <input type="checkbox" name="fruits" id="" value="수박" />수박
+        <input type="checkbox" name="fruits" id="" value="딸기" />딸기
+        <div class="text-danger">과일을 선택해 주세요</div>
+      </div>
+      <button type="submit">전송</button>
+    </form>
+    <script>
+      // form 폼 submit 일어났을 때 이벤트 처리
+      const form = document.querySelector("form");
+      const errMsg = document.querySelector(".text-danger");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault(); // submit일 땐 무조건 막기
+
+        // 이름이 입력되었는지 확인
+        //  폼 요소 접근하기
+        if (form.name.value === "") {
+          // 포커스를 이름으로 주기
+          form.name.focus();
+          // 메시지 보여주기 (디스플레이 블록으로 바꿔주기)
+          errMsg.style.display = "block";
+        } else {
+            errMsg.style.display = "none";
+        }
+
+        // 3.  선택된 과일 가져오기 (submit이 되면)
+        // 3-1) 전체 출력
+        //   const fruits = form.fruits;
+        //   console.log(fruits);
+  
+        const fruits = document.querySelectorAll("[type='checkbox']:checked");
+        // 3-3) 과일 에러메시지 만들기
+        //  fruits 는 배열이다. 그리고, 과일을 선택하지 않으면 오류 메시지를 내게 만들어야 한다.
+        if (fruits.length === 0) {
+            document.querySelector("form div:nth-child .text-danger").style.display = "block";
+        }
+        // 3-3-1) querySelectorAll로 errMsg를 1, 2번으로 만들어서 하면 된다. -> ?
+        // 3-3-2) 아니면 qeurySelector로 위와 같이 만들면 된다. 
+
+
+
+
+        // 3-2) 선택한 value 값만 들어오는지 확인
+        // fruits.forEach((item) => {
+        //   console.log(item.value); // 선택한 value만 값이 들어오는지 확인
+        // }); 
+        
+        
+        // 2. 개별 요소로 처리하는 방법
+        //   document.querySelector("form div:nth-child(2)").addEventListener("click", (e)=>console.log(e.target.value));
+ 
+      });
+
+    </script>
+  </body>
+</html>

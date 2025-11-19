@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <style>
+        body{
+            background-color: blueviolet;
+        }
+    </style> -->
+  </head>
+  <body>
+    <form action="" method="get"></form>
+    <div><input type="radio" name="color" id="" />파랑 <input type="radio" name="color" id="" />녹색</div>
+
+    <script>
+      // 파랑, 녹색 선택 시 문서 변경색 변경
+      // js에서 css 설정하는 방버
+      // document.body.style.backgroundColor = "blueviolet";
+      // document.querySelector().style.backgroundColor = "blueviolet";
+      // 사용자가 언제
+      const rdos = document.querySelectorAll("[type='radio']");
+    //   rdos[0].addEventListener("click", () => {
+    //     document.body.style.backgroundColor = "lightblue";
+    //   });
+    //   rdos[1].addEventListener("click", () => {
+    //     document.body.style.backgroundColor = "green";
+    //   });
+
+    //   // method 2
+      const changeColor = (color) => {
+        document.body.style.backgroundColor = color;
+      };
+    //   rdos[0].addEventListener("click", () => "lightblue");
+    //   rdos[1].addEventListener("click", () => "green");
+    
+    //   rdos[0].addEventListener("click", (e) => 
+    //   // e.target : 이벤트 대상
+    //   // console.log(e.target.value));
+    //   {changeColor(e.target.value)});
+    //   rdos[1].addEventListener("click", (e) => 
+    //   {changeColor(e.target.value)});
+
+    // 방법 3: value 사용 시 
+    rods.forEach((rdo) => {
+        rdo.addEventsListner("click", (e)=>{
+            changeColor(e.target.value)
+        })
+    });
+    </script>
+  </body>
+</html>
