@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .alert-box {
+            background-color: brown;
+            padding: 20px;
+            color: white;
+            border-radius: 5px;
+            position:relative;
+            display: none;
+        }
+        
+        .alert-box .close{
+            position: absolute;
+            right: 10px;
+            top: 6px;
+            cursor: pointer;
+        }
+        button{
+            border: 0;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: blueviolet;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="alert-box">
+        알림창
+        <div class="close">X</div>
+    </div>
+    <button type="button">알림창 보여주기</button>
+    <script src="alert.js"></script>
+</body>
+</html>

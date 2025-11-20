@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        /* transform : No effects on surround elements, only change itself
+           - rotate(45) : turn 45 degree
+           - translat(x axis, y axis) : move the position
+           - skew(num1 in x axis, num2 in y axis) :  tilt 
+            | skewX(), skewT()
+           - scale() : expand/reduce with ratio
+            | scaleX(), scaleY()   
+           */
+      .box {
+        width: 150px;
+        height: 80px;
+      }
+      .box1 {
+        background-color: yellowgreen;
+        transform: translate(0);
+        transition: all 0.5s; 
+        /* animation effect */
+      }
+      .box2 {
+        margin: 300px 100px;
+        background-color: red;
+        transition: all 0.75;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box box1">Hello World</div>
+    <div class="box box2">Hello World</div>
+    <script>
+      document.querySelector(".box1").addEventListener("click", (e) => {
+        // 특정 위치로 이동 (head의 다음에 실행)
+        e.target.style.transform = `translate(100px, 300px)`;
+      });
+      document.querySelector(".box2").addEventListener("click", (e) => {
+        // expansion target e(vox2) on Y axis
+        e.target.style.transform = `rotate(1)`; 
+      });
+    </script>
+  </body>
+</html>
