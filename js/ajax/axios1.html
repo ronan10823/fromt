@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div></div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      // axios
+      //   .get("경로")
+      //   .then(function (response) {
+      //     // 성공 핸들링
+      //     console.log(response);
+      //   })
+      //   .catch(function (error) {
+      //     // 에러 핸들링
+      //     console.log(error);
+      //   })
+      //   .finally(function () {
+      //     // 항상 실행되는 영역
+      //   });
+
+      axios.get("https://jsonplaceholder.typicode.com/todos/1").then((response) => {
+          console.log("전체 ", response);
+          console.log("데이터 ", response.data);
+          // 도착한 데이터를 div 안에 보여주기
+
+          const json = response.data;
+
+          let result = `<ul>`;
+          result += `<li>userId:  ${json.userId}</li>`;
+          result += `<li>id:  ${json.id}</li>`;
+          result += `<li>title:  ${json.title}</li>`;
+          result += `<li>completed:  ${json.completed}</li>`;
+          result += `</ul>`;
+
+          document.querySelector("div").innerHTML = result;
+        });
+    </script>
+  </body>
+</html>

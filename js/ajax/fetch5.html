@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function getData(callbackFn) {
+        fetch("https://jsonplaceholder.typicode.com/todos/1")
+          .then((response) => response.json())
+          .then((data) => callbackFn(data)); // 중괄호를 썼다면 return 을 사용했어야 함. 지금은 생략
+      }
+
+      function getData2(callbackFn2) {
+        fetch("https://jsonplaceholder.typicode.com/todos/")
+          .then((response) => response.json())
+          .then((data) => callbackFn2(data));
+      }
+
+      // 콜백 지옥
+      getData((data) => {
+        console.log(data);
+      });
+
+      getData2((data) => {
+        console.log(data);
+      });
+      // ...? 뭐 하는 코드인지 모르겠네
+
+      // 이런 콜백 지옥을 해결하기 위해 자바스크립트에서 나온 고급 개념이
+      // 1. Promise
+      // 2. async / await
+    </script>
+  </body>
+</html>

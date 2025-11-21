@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div></div>
+    <script>
+      fetch("https://ronan10823.github.io./data/data.txt")
+        .then((response) => {
+          console.log("response ", response);
+          if (!response.ok) throw new Error("error");
+          return response.text;
+        })
+        .then((data) => {
+          console.log(data);
+          document.querySelector("div").insertAdjacentHTML("afterbegin", data);
+          // 왜 이 한 줄 썼다고 왜 출력이 되는 건지 잘 모르겠다. 왜 그 전까지는 안된건데?
+        })
+        .catch((e) => console.log(e)); // then 뒤에 ;를 붙이면 에러가 나는구나.
+    </script>
+  </body>
+</html>

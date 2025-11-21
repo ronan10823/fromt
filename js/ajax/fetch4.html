@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        display: flex;
+        background-color: lightblue;
+        height: 50px;
+        justify-content: center;
+        align-items: center;
+      }
+      .container li {
+        margin: 0 10px;
+        width: 25%;
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="container">
+      <li>menu 1</li>
+      <li>menu 2</li>
+      <li>menu 3</li>
+      <li>menu 4</li>
+    </ul>
+    <div></div>
+    <script>
+      document.querySelector(".container li:nth-child(2)").addEventListener("click", () => {
+        fetch("https://ronan10823.github.io./data/version2.json")
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+
+            let result = `<ul>`;
+            data.forEach((item) => {
+              result += `<li>version:  ${item.version}</li>`;
+              result += `<li>codename:  ${item.codename}</li>`; // item을 data에서 안 바꿔놔서 오류가 났었다.
+            });
+            result += `</ul>`;
+            document.querySelector("div").insertAdjacentHTML("afterbegin", result);
+          });
+      });
+
+      // after you click menu 3,
+      // https://jsonplaceholder.typicode.com/users
+      // id, name, email, address(street)
+      // table 형태로
+
+      document.querySelector(".container li:nth-child(3)").addEventListener("click", () => {
+        fetch("https://jsonplaceholder.typicode.com/users")
+          .then((response) => response.json())
+          .then((data) => {
+            let result = `<table>`;
+            result += "<thead><tr><th>id</th><th>name</th><th>email</th><th>address</th></thead>";
+
+            data.forEach((item) => {
+              result += `<tr>`;
+              result += `<td>${item.id}</td>`;
+              result += `<td>${item.name}</td>`;
+              result += `<td>${item.email}</td>`;
+              result += `<td>${item.address.street}</td>`;
+              result += `</tr>`;
+            });
+
+            result += `</tbody>`;
+            result += `</table>`;
+            document.querySelector("div").innerHTML = result;
+          });
+      });
+    </script>
+  </body>
+</html>

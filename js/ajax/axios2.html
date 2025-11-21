@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div></div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      axios
+        .get("https://ronan10823.github.io./data/data.txt")
+        .then((response) => {
+          console.log("response ", response);
+          // I don't know what's going on. 
+          const data = response.data;
+
+          document.querySelector("div").insertAdjacentHTML("afterbegin", data);
+        })
+        .catch((e) => console.log(e));
+    </script>
+  </body>
+</html>

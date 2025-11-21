@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        display: flex;
+        background-color: lightblue;
+        height: 50px;
+        justify-content: center;
+        align-items: center;
+      }
+      .container li {
+        margin: 0 10px;
+        width: 25%;
+        list-style: none;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="container">
+      <li>menu 1</li>
+      <li>menu 2</li>
+      <li>menu 3</li>
+      <li>menu 4</li>
+    </ul>
+    <div></div>
+    <script>
+      // version.json
+      document.querySelector("li").addEventListener("click", () => {
+        fetch("https://ronan10823.github.io./data/version.json")
+          .then((response) => response.json())
+          .then((data) => { // json으로 하면, 'data' undefined라는 오류가 뜬다. 왜? 
+            console.log(data);
+            let result = `<ul>`;
+            result += `<li>version:  ${data.version}</li>`;
+            result += `<li>codename:  ${data.codename}</li>`;
+            result += `</ul>`;
+            document.querySelector("div").insertAdjacentHTML("afterbegin", result);
+          });
+      });
+    </script>
+  </body>
+</html>
