@@ -1,5 +1,4 @@
-//fetch
-// init과 btn에서도 써야 해서 init 위에 선언
+// axios
 const txtYear = document.querySelector("#txtYear");
 const selMon = document.querySelector("#selMon");
 const selDay = document.querySelector("#selDay");
@@ -32,12 +31,10 @@ btn.addEventListener("click", () => {
   const date = txtYear.value + selMon.value + selDay.value;
   console.log(date);
   const url = `http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=eb701c68265eee3e0d3e4bf254de7c77&targetDt=${date}`; // 사용자가 입력한 날짜가 들어간다.
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      // movieCd, movieNm, rank, rankInten -> dailyBoxOfficeList 배열로 전부 추출하기
-      const dailyBoxOfficeList = data.boxOfficeResult.dailyBoxOfficeList;
+  axios.get(url)
+    .then((response) => {
+      // movieCd, movieNm, rank, rankInten
+      const dailyBoxOfficeList = response.data.boxOfficeResult.dailyBoxOfficeList;
 
       let contents = "";
       dailyBoxOfficeList.forEach((item) => {
@@ -50,11 +47,11 @@ btn.addEventListener("click", () => {
         contents += `(`;
 
         if (item.rankInten > 0) {
-          contents += `▲ ${item.rankInten}`;
+          contents += `▲ ${item.rankInten})`;
         } else if (item.rankInten < 0) {
-          contents += `▼ ${item.rankInten}`;
+          contents += `▼ ${item.rankInten})`;
         } else {
-          contents += `${item.rankInten}`;
+          contents += `${item.rankInten})`;
         }
         contents += `<br>`;
       });
@@ -79,68 +76,42 @@ document.querySelector("#msg").addEventListener("click", (e) => {
   const movieCd = e.target.getAttribute("href");
   const url = `http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=eb701c68265eee3e0d3e4bf254de7c77&movieCd=${movieCd}`;
 
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data.movieInfoResult.movieInfo);
-      const movieInfo = data.movieInfoResult.movieInfo;
+  axios.get(url)
+  .then((response) => {
+    console.log(response.data);
 
-      let movieDetail = "<ul>";
-      // 한글제목 : 위키드 : 포 굿
-      movieDetail += `<li>한글제목 : ${movieInfo.movieNm} </li>`;
-      // 영어제목 : Wicked: For Good
-      movieDetail += `<li>영어제목 : ${movieInfo.movieNmEn} </li>`;
-      // 상영시간 : 137분
-      movieDetail += `<li>상영시간 : ${movieInfo.showTm} 분 </li>`;
+    const movieInfo = response.data.movieInfoResult.movieInfo;
 
-      // 장르: 판타지, 뮤지컬, 어드벤처
-      let genres = "";
-      movieInfo.genres.forEach((genre) => {
-        genres += `${genre.genreNm},`;
-      });
-      movieDetail += `<li>장르 : ${genres} </li>`;
+    let movieDetail = "<ul>";
+    // 한글제목 : 위키드 : 포 굿
+    movieDetail += `<li>한글제목 : ${movieInfo.movieNm} </li>`;
+    // 영어제목 : Wicked: For Good
+    movieDetail += `<li>영어제목 : ${movieInfo.movieNmEn} </li>`;
+    // 상영시간 : 137분
+    movieDetail += `<li>상영시간 : ${movieInfo.showTm} 분 </li>`;
 
-      // 감독: 존 추
-      let directors = "";
-      movieInfo.directors.forEach((director) => {
-        directors += `${director.peopleNm},`;
-      });
-      movieDetail += `<li>감독 : ${directors} </li>`;
-
-      // 배우: 신시아 에리보 , =-- for Each
-      let actors = "";
-      movieInfo.actors.forEach((actor) => {
-        actors += `${actor.peopleNm},`;
-      });
-      movieDetail += `<li>배우 : ${actors} </li>`;
-
-      document.querySelector("#detail").innerHTML = movieDetail;
+    // 장르: 판타지, 뮤지컬, 어드벤처
+    let genres = "";
+    movieInfo.genres.forEach((genre) => {
+      genres += `${genre.genreNm},`;
     });
+    movieDetail += `<li>장르 : ${genres} </li>`;
 
-  //   const movieInfo = data.movieInfoResult.movieInfo;
+    // 감독: 존 추
+    let directors = "";
+    movieInfo.directors.forEach((director) => {
+      directors += `${director.peopleNm},`;
+    });
+    movieDetail += `<li>감독 : ${directors} </li>`;
 
-  //   let contents = "";
-  //   contents = `한글 제목: ${movieInfo.movieNm}`;
-  //   contents = `영어 제목: ${movieInfo.movieNmEn}`;
-  //   contents = `상영 시간: ${movieInfo.showTm}분`;
-  //   contents = `장르: ${movieInfo.genres}`;
-  //   contents = `감독: ${movieInfo.direction.peopleName}`;
-  //   fetch(url)
-  //   .then((res)=>res.json())
-  //   .then((data)=>{
+    // 배우: 신시아 에리보 , =-- for Each
+    let actors = "";
+    movieInfo.actors.forEach((actor) => {
+      actors += `${actor.peopleNm},`;
+    });
+    movieDetail += `<li>배우 : ${actors} </li>`;
 
-  //   })
+    document.querySelector("#detail").innerHTML = movieDetail;
+  });
+
 });
-
-// // 2-1.  문제가 생길수도 있다. 오늘이 9월 9일이었다면? 입력값은 09이기에, 사용자의 입력값을 한자리인 9에서 09로 만들기 위해서 작업을 해야한다.
-// txtYear.value = year;
-// selMon.value = month;
-// selDay.value = day;
-
-// 사용자가 확인을 누르면, 입력한 날짜를 받아야 한다.
-
-// fetch("http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=eb701c68265eee3e0d3e4bf254de7c77&targetDt=20251120")
-//   .then((res) => res.json())
-//   .then((data) => {
-//     console.log(data);
-//   }); // 날짜를 고쳐야 한다.
