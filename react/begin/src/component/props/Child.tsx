@@ -2,9 +2,11 @@
 type ChildProps = {
   name: string;
   color: string;
+  age: number;
 };
 
-function Child({ name, color }: ChildProps) {
+// 구조분해할당
+function Child({ name, color, age = 20 }: ChildProps) {
   // function Child(props: ChildProps) {
   name += 'from Parent';
   // props.name += 'from Parent';
@@ -16,6 +18,7 @@ function Child({ name, color }: ChildProps) {
       <h2 className="text-xl">{props.color}</h2> */}
       <h2 className="text-xl">{name}</h2>
       <h2 className="text-xl">{color}</h2>
+      <h2 className="text-xl">{age}</h2>
     </>
   );
 }
