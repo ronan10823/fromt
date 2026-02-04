@@ -1,7 +1,8 @@
-import { use, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 const heavyCalc = (num) => {
-  console.log('Calculationg...');
+  console.log('Calculating...');
+
   let result = 0;
   for (let index = 0; index < 10000000000; index++) {
     result += num;
@@ -13,7 +14,7 @@ function Memo() {
   const [count1, setCount1] = useState(0);
   const [count2, setCount2] = useState(0);
 
-  // [] 안에 들어있는 값이 변경되는 경우에만 heavyCalc() 실행
+  // [] 안에 들어있는 값이 변경되는 경우에만 heavyCalc() 실행하기
   const calculatedValue = useMemo(() => heavyCalc(count2), [count2]);
 
   return (

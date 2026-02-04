@@ -8,10 +8,10 @@ function AddTask({ onAddTask }: { onAddTask: (text: string) => void }) {
       <div className="flex gap-2">
         <input
           type="text"
-          name="username"
+          name="text"
           id=""
           className="flex-1 rounded border px-3 py-2"
-          placeholder="할 일을 입력하세요."
+          placeholder="할 일을 입력하세요"
           onChange={(e) => setText(e.target.value)}
           value={text}
         />

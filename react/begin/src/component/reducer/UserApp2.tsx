@@ -15,18 +15,14 @@ export const initialUser: UserType = {
 
 function UserApp2() {
   // const [user, setUser] = useState(initialUser);
-  // -> state 대신에 reducer로 관리한다.
-  // -> const [state, dispatch] = userReducer(Reducer 함수, 초기값)
+  // useReducer(리듀서함수, 초기값);
   const [user, dispatch] = useReducer(userReducer, initialUser);
 
-  // name, year, warning 분해
   const { name, year, warning } = user;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // 2개의 이벤트를 하나의 함수로만 처리하고 있어서, e.target으로 2개의 이벤트를 나눠야 한다.
     const { name, value } = e.target;
 
-    // 목적: 이름, 나이 표시 + 나이(성인 여부 판별, 18세 이하면 경고 메시지)
     // 이름(소문자로 변경 후 보여주기)
     if (name === 'name') {
       dispatch({
@@ -34,7 +30,7 @@ function UserApp2() {
         name: value,
       });
     } else {
-      //else 구문에서 나이(18세 이하 경고 처리)
+      // 나이(성인여부 판별 18세 이하면 경고 메세지)
       dispatch({
         type: 'SET_YEAR',
         year: Number(value),
@@ -50,13 +46,13 @@ function UserApp2() {
 
   return (
     <div className="mt-10 flex flex-col items-center px-3 py-2">
-      <div className="item-center mr-2 flex w-full gap-3">
+      <div className="flex w-full items-center gap-3">
         <div>
           <input
             type="text"
             name="name"
             className="flex-1 rounded border px-3 py-2"
-            placeholder="Enter name."
+            placeholder="Enter name"
             onChange={handleChange}
             value={name}
           />
@@ -66,7 +62,7 @@ function UserApp2() {
             type="number"
             name="year"
             className="flex-1 rounded border px-3 py-2"
-            placeholder="Enter birth year."
+            placeholder="Enter birth year"
             onChange={handleChange}
             value={year}
           />
@@ -85,7 +81,6 @@ function UserApp2() {
               Year : {year}{' '}
               {warning && <span className="text-red-500">{warning}</span>}
             </li>
-            {/* {warning && ...} = 'warning이라는 상황이 생기면'의 의미 */}
           </ul>
         </div>
       </div>

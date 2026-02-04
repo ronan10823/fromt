@@ -1,46 +1,32 @@
 import { useState } from 'react';
-import negotiation1 from '../../assets/img/negotiation1.jpg';
-import negotiation2 from '../../assets/img/negotiation2.jpg';
-import negotiation3 from '../../assets/img/negotiation3.jpg';
+import wish1 from '../../assets/img/wish1.jpg';
+import wish2 from '../../assets/img/wish2.jpg';
 
-function Poster() {
-  // useState(): 첫 번째 인자=defaul 값, 두번째 인자=함수
-  const [src, setSrc] = useState<string>(negotiation1);
+const Poster = () => {
+  // useState() : 첫번째 인자 => default값, 두번째인자 => 함수
+  const [src, setSrc] = useState<string>(wish1);
 
-  // 버튼 상태 변화 저장하기 위한 변수
+  // 버튼 상태 변화 저장
   const [btn, setBtn] = useState<boolean>(true);
 
-  const posters = [negotiation1, negotiation2, negotiation3];
-
-  // 2개는 이거로 되지만, 3개는 안된다. 배열을 이용해야 한다. 어떻게?
-  const onToggleHandleld = () => {
-    // setSrc(negotiation1)
-    // setSrc(negotiation2)
-    // setSrc(negotiation3)
+  const onToggleHandled = () => {
     if (btn) {
-      setSrc(negotiation1);
+      setSrc(wish1);
       setBtn(false);
-    } else if (btn) {
-      setSrc(negotiation2);
-      setBtn(true);
     } else {
-      setSrc(negotiation3);
-      setBtn(false);
+      setSrc(wish2);
+      setBtn(true);
     }
   };
 
   return (
     <>
-      {/* 버튼 누를 때 사진이 다른 사진으로 바뀌게 하고 싶다.
-      그러기 위해서는, img의 src의 상태값이 변경되는 것을 함수로 만들어야 한다. 
-      버튼을 눌렀을 때 이미지가 변경되게 하고 싶으면 버튼에 toggle을 사용*/}
-
       <div className="m-3">
         <div className="mt-8">
           <img src={src} alt="" width={300} height={500} />
           <button
-            className="m-2 w-32 bg-blue-500 p-4 text-xl text-white"
-            onClick={onToggleHandleld}
+            className="m-2 w-32 rounded bg-blue-500 p-4 text-xl text-white"
+            onClick={onToggleHandled}
           >
             이미지 변경
           </button>
@@ -48,6 +34,6 @@ function Poster() {
       </div>
     </>
   );
-}
+};
 
 export default Poster;

@@ -11,7 +11,7 @@ function CardLayout({
   return (
     <>
       <div className={styles.card}>
-        <div>{title}</div>
+        <h2>{title}</h2>
         <div>{children}</div>
       </div>
     </>

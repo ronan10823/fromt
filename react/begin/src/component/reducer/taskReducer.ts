@@ -1,11 +1,11 @@
-import type { Task, TaskList } from '../types/main';
+import { act } from 'react';
+import type { Task, TaskList } from '../../types/task';
 
 type TaskAction =
-  | { type: 'ADD'; id: number; text: string; done: boolean } // ADD 넘어올 때는 하나로 넘어온다.
-  | { type: 'CHANGE'; task: Task } // change에서는 TaskApp에서 보면 변수가 task:Task이다.
+  | { type: 'ADD'; id: number; text: string; done: boolean }
+  | { type: 'CHANGE'; task: Task }
   | { type: 'DELETE'; id: number };
 
-// task: Task[] <- 왜 TaskList가 아니고 Task[]일까? 왜 배열일까?
 export function taskReducer(tasks: Task[], action: TaskAction) {
   switch (action.type) {
     case 'ADD':

@@ -5,23 +5,27 @@ function LifeCycle2() {
   const [count2, setCount2] = useState(0);
 
   useEffect(() => {
-    console.log('1.Mounted');
+    console.log('1. Mounted / 2. Updated');
 
-    return () => console.log('3.Unmounted');
-  }, [count1, count2]);
+    console.log(count1);
+
+    return () => console.log('3. Unmounted');
+  }, [count1]);
 
   const handleClick = () => {};
-  console.log('---- Rendering ----');
+
+  console.log('--- Rendering ---');
+
   return (
     <>
       <div className="mx-3 mt-10 flex p-3">
-        <h3 className="text-x1">{count1}</h3>
-        <button className="border p-2" onClick={() => setCount1(count1)}>
-          Count 1++
+        <h3 className="text-xl">{count1}</h3>
+        <button className="border p-2" onClick={() => setCount1(count1 + 1)}>
+          Count1++
         </button>
-        <h3 className="text-x1">{count2}</h3>
-        <button className="border p-2" onClick={() => setCount1(count2)}>
-          Count 2++
+        <h3 className="text-xl">{count2}</h3>
+        <button className="border p-2" onClick={() => setCount2(count2 + 1)}>
+          Count2++
         </button>
       </div>
     </>

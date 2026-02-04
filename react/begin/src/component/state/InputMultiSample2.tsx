@@ -13,7 +13,7 @@ function InputMultiSample2() {
     const { value, name } = e.target;
 
     setInputs({
-      ...inputs, // 기존의 값을 반드시 복사해야 한다. (스트레드 연산자를 이용)
+      ...inputs,
       [name]: value,
     });
   };
@@ -37,7 +37,7 @@ function InputMultiSample2() {
         className="border-2 p-1.5"
       />
       <button
-        className="bg-red-500 p-4"
+        className="bg-red-500 p-2"
         onClick={() =>
           setInputs({
             name: '',
@@ -49,7 +49,7 @@ function InputMultiSample2() {
       </button>
       <div>
         <b>
-          입력값 : {name} : ({nickname}){' '}
+          입력값 : {name} : ({nickname})
         </b>
       </div>
     </>

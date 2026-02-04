@@ -4,7 +4,7 @@ type NavProps = {
   topics: Topic[];
 };
 
-//  <a href={"/read"}>title</a>
+// <li><a href={"/read"}>title</a></li>
 function Nav({ topics }: NavProps) {
   return (
     <nav>

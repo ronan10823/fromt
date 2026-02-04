@@ -1,12 +1,12 @@
 import type { Topic } from '../types/topic';
+import Article from './Article';
 import Header from './Header';
 import Nav from './Nav';
-import Article from './props/Article';
 
 const topics: Topic[] = [
   { id: 1, title: 'html', body: 'html 이란' },
   { id: 2, title: 'css', body: 'css 이란' },
-  { id: 3, title: 'js', body: 'javascript 란' },
+  { id: 3, title: 'js', body: 'javascript 이란' },
 ];
 
 function MyApp() {

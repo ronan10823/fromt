@@ -10,6 +10,7 @@ function ProductCard({
   formatPrice: (p: number) => string;
 }) {
   const displayPrice = formatPrice(price);
+
   return (
     <>
       <div className={styles.card}>

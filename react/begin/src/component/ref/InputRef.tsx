@@ -1,7 +1,6 @@
 import { useRef } from 'react';
 
 function InputRef() {
-  // Focus Input 버튼을 누르면 입력칸 안에 커서가 깜빡이게 하고싶다.
   const inputRef = useRef<null | HTMLInputElement>(null);
 
   const handleFocus = () => {

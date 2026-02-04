@@ -1,15 +1,165 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import TodoTeamplate from "./components/TodoTemplate";
+import { useCallback, useEffect, useState } from 'react';
+import ReactPaginate from 'react-paginate';
+import { createTodo, deleteTodo, fetchTodos, updateTodo } from './api/fetch';
+import './App.css';
+import TodoInsert from './components/TodoInsert';
+import TodoList from './components/TodoList';
+import TodoTeamplate from './components/TodoTemplate';
+import {
+  type boolParam,
+  type PageResult,
+  type Todo,
+  type TodoUpsert,
+} from './types/todo';
+
+// 서버 연동 방식
+const initialPageState: PageResult<Todo> = {
+  dtoList: [],
+  pageNumList: [],
+  pageRequestDTO: { page: 0, size: 10 },
+  prev: false,
+  next: false,
+  prevPage: 0,
+  nextPage: 0,
+  totalPage: 0,
+  current: 0,
+  totalCount: 0,
+};
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [todos, setTodos] = useState<PageResult<Todo>>(initialPageState);
+  const [isCompleted, setIsCompleted] = useState<boolParam>('');
+  //강제 refresh 용
+  const [refreshKey, setRefreshKey] = useState(0);
+  const forceReload = () => setRefreshKey((k) => k + 1);
+
+  //페이지 나누기 현재 페이지 저장용
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const offset = currentPage * todos.pageRequestDTO.size;
+  console.log(`Loading items from ${currentPage} to ${offset}`);
+
+  // 100 / 10 = [1,2,3,4,5,6,7,8,9,10]
+  const pageCount = Math.ceil(todos.totalCount / todos.pageRequestDTO.size);
+
+  // 페이지 번호 클릭 시 호출
+  const handlePageClick = (event: { selected: number }) => {
+    console.log(`User requested page number ${event.selected}`);
+    setCurrentPage(event.selected);
+  };
+
+  const getList = useCallback(async (completed: boolParam, page: number) => {
+    try {
+      const data = await fetchTodos(completed, page);
+      setTodos(data);
+    } catch (error) {
+      console.error('fetchTodos error', error);
+    }
+  }, []);
+
+  // 데이터 가져오기(삽입,수정,삭제)
+  useEffect(() => {
+    console.log('확인');
+    getList(isCompleted, currentPage);
+  }, [isCompleted, getList, currentPage, refreshKey]);
+
+  // 일정추가
+  const handleAddTodo = async (todo: TodoUpsert) => {
+    try {
+      const result = await createTodo(todo);
+      console.log('생성 ', result);
+
+      // await getList("");
+      setIsCompleted('');
+      setCurrentPage(0);
+      forceReload();
+    } catch (error) {}
+  };
+
+  // 일정완료
+  const handleChangeTodo = async (todo: TodoUpsert) => {
+    try {
+      const result = await updateTodo(todo);
+      console.log('수정 ', result);
+
+      // list 요청 => useEffect() 자동 (useState 값들의 변화)
+      setIsCompleted('');
+      setCurrentPage(0);
+      forceReload();
+    } catch (error) {}
+  };
+
+  // 일정삭제
+  const handleDeleteTodo = async (id: number) => {
+    try {
+      const result = await deleteTodo(id);
+      console.log('삭제여부 ', result);
+
+      // 리스트 호출 : getList(); => useEffect() 자동호출
+      // 완료구분 없이 전체 지정
+      setIsCompleted('');
+      setCurrentPage(0);
+      forceReload();
+    } catch (error) {}
+  };
+
+  // 완료/미완료 선택
+  const handleComplete = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const completed = e.target.value as boolParam;
+    setIsCompleted(completed);
+    // getList(completed); => useEffect() 자동호출
+    forceReload();
+  };
 
   return (
     <>
-      <TodoTeamplate />
+      <TodoTeamplate>
+        <div className="flex p-3">
+          <span className="flex-1 text-left text-orange-700">
+            중요일정은 체크 클릭
+          </span>
+          <div className="shrink-0">
+            <span>완료</span>
+            <select
+              name="completed"
+              className="mx-2 rounded border border-gray-400"
+              onChange={handleComplete}
+              value={isCompleted}
+            >
+              {[
+                { label: '전체', value: '' },
+                { label: '완료', value: 'true' },
+                { label: '미완료', value: 'false' },
+              ].map((option, idx) => (
+                <option value={option.value} key={idx}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+        <TodoInsert onAddTodo={handleAddTodo} />
+        <TodoList
+          todos={todos}
+          onDeleteTodo={handleDeleteTodo}
+          onChangeTodo={handleChangeTodo}
+        />
+      </TodoTeamplate>
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={5}
+        pageCount={pageCount}
+        previousLabel="< previous"
+        renderOnZeroPageCount={null}
+        forcePage={currentPage}
+        containerClassName="flex justfy-center gap-2 mt-4"
+        pageClassName="px-3 py-1 border rounded cursor-pointer"
+        activeClassName="bg-orange-500 text-white"
+        previousClassName="px-3 py-1 border rounded cursor-pointer"
+        nextClassName="px-3 py-1 border rounded cursor-pointer"
+      />
     </>
   );
 }

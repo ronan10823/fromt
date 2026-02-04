@@ -7,7 +7,8 @@ function InputMultiSample() {
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setName(e.target.value);
-  const handleNicknameChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+
+  const handleNickNameChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setNickname(e.target.value);
 
   return (
@@ -23,23 +24,23 @@ function InputMultiSample() {
       <input
         type="text"
         name=""
-        onChange={handleNicknameChange}
+        onChange={handleNickNameChange}
         value={nickname}
         placeholder="닉네임"
         className="border-2 p-1.5"
       />
       <button
-        className="bg-red-500 p-4"
+        className="bg-red-500 p-2"
         onClick={() => {
-          setName('');
           setNickname('');
+          setName('');
         }}
       >
         초기화
       </button>
       <div>
         <b>
-          입력값 : {name} : ({nickname}){' '}
+          입력값 : {name} : ({nickname})
         </b>
       </div>
     </>

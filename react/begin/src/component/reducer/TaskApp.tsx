@@ -1,7 +1,7 @@
 import { useEffect, useReducer, useState } from 'react';
 import AddTask from './AddTask';
 import ListTask from './ListTask';
-import type { Task } from '../types/main';
+import type { Task } from '../../types/task';
 import { taskReducer } from './taskReducer';
 
 export type TaskProps = {
@@ -18,12 +18,12 @@ const initialTask = [
 let nextId = 3;
 
 function TaskApp() {
-  // const [tasks, setTasks] = useState(initialTask); -> useReducer로 변경
+  // const [tasks, setTasks] = useState(initialTask);
   const [tasks, dispatch] = useReducer(taskReducer, initialTask);
 
   // 여행계획 추가
   const handleAddTask = (text: string) => {
-    // task 추가
+    // tasks 추가
     dispatch({
       type: 'ADD',
       id: nextId++,
@@ -31,47 +31,44 @@ function TaskApp() {
       done: false,
     });
   };
-
   // 여행계획 수정
   const handleChangeTask = (task: Task) => {
-    console.log('변경', task);
-    // 수정할 task 찾기 (수정 대상=task, 수정된 내용=t)
+    console.log('변경 ', task);
+    // 수정할 task 찾기
     dispatch({
       type: 'CHANGE',
       task: task,
     });
   };
-
-  // 여행계획 삭제
+  // 여행계획 제거
   const handleDeleteTask = (taskId: number) => {
-    // task에서 (ListTask) id에 해당하는 task 제거
-    // task에서 id와 일치하지 않는 task 추출해서 새로운 배열 생성 => 이러한 기능을 해주는 애들 : map(), filter()
+    // tasks 에서 id 에 해당하는 task 제거
+    // tasks 에서 id 와 일치하지 않는 task 추출해서 새로운 배열 생성 : map(), filter()
     dispatch({
       type: 'DELETE',
       id: taskId,
     });
   };
 
-  // 상태 확인용
+  // useState 확인용
   useEffect(() => {
-    console.log('업데이트 된 tasks', tasks);
+    console.log('업데이트 된 tasks ', tasks);
   }, [tasks]);
 
   return (
-    <>
-      <div className="mt-10 flex justify-center">
-        <div className="w-full max-w-2xl space-y-6 rounded-lg bg-white p-6 shadow-md">
-          <h2 className="text-center text-2xl font-semibold">가볼 여행지</h2>
-          {/* 데이터 입력 */}
-          <AddTask onAddTask={handleAddTask} />
-          <ListTask
-            tasks={tasks}
-            onDeleteTask={handleDeleteTask}
-            onChangeTask={handleChangeTask}
-          />
-        </div>
+    <div className="mt-10 flex justify-center">
+      <div className="w-full max-w-2xl space-y-6 rounded-lg bg-white p-6 shadow-md">
+        <h2 className="text-center text-2xl font-semibold">여행지 계획</h2>
+        {/* 데이터 입력 */}
+        <AddTask onAddTask={handleAddTask} />
+        {/* 리스트 */}
+        <ListTask
+          tasks={tasks}
+          onDeleteTask={handleDeleteTask}
+          onChangeTask={handleChangeTask}
+        />
       </div>
-    </>
+    </div>
   );
 }
 

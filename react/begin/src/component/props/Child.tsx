@@ -1,15 +1,18 @@
-// name의 타입 지정 -> type or interface
+// type or interface
+
 type ChildProps = {
   name: string;
   color: string;
-  age: number;
+  age?: number;
 };
 
 // 구조분해할당
 function Child({ name, color, age = 20 }: ChildProps) {
   // function Child(props: ChildProps) {
-  name += 'from Parent';
-  // props.name += 'from Parent';
+  // Cannot assign to read only property 'name' of object
+  // props.name += ' from Parent';
+
+  // name += ' from Parent';
 
   return (
     <>

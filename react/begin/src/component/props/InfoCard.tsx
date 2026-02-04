@@ -6,27 +6,26 @@ export interface Card {
   author?: string;
 }
 
-// Props로 한 번에 받아낸다면?
 // function InfoCard(props: Card) {
 //   return (
 //     <>
 //       <div className={styles.card}>
 //         <h2>{props.title}</h2>
 //         <p>{props.content}</p>
-//         <p>Author: {props.author}</p>
+//         <p>Author : {props.author}</p>
 //       </div>
 //     </>
 //   );
 // }
 
-// 구조 분해 형식
+// 구조분해
 function InfoCard({ title, content, author }: Card) {
   return (
     <>
       <div className={styles.card}>
         <h2>{title}</h2>
         <p>{content}</p>
-        <p>Author: {author}</p>
+        <p>Author : {author}</p>
       </div>
     </>
   );

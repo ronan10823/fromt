@@ -3,7 +3,7 @@ import '../../App.css';
 
 function CounterRef() {
   // useState() : 컴포넌트가 기억해야 할 값을 만들고 관리하는 함수
-  // 초기값이 0인 상태를 하나 만들고, 그 상태값을 저장하는 변수로 count
+  // 초기값이 0 인 상태를 하나 만들고, 그 상태값을 저장하는 변수로 count
   // 값을 변경하는 함수는 setCount 로 할거야
   const [count, setCount] = useState(0);
 
@@ -15,6 +15,7 @@ function CounterRef() {
     num.current += 1;
     console.log(num.current);
   };
+
   return (
     <>
       <div>
@@ -27,7 +28,7 @@ function CounterRef() {
         </button>
         <h2>{num.current}</h2>
         <button className="bg-orange-500 p-4" onClick={increment}>
-          숫자 변경
+          useRef
         </button>
       </div>
     </>

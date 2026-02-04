@@ -1,6 +1,6 @@
-// name의 타입 지정 -> type or interface
+// type or interface
 
-import React, { use } from 'react';
+import React from 'react';
 
 // 구조분해할당
 function Child({ active, onClick }) {

@@ -4,12 +4,13 @@ function LifeCycle() {
   const [selected, setSelected] = useState('');
 
   useEffect(() => {
-    console.log('1.Mounted');
+    console.log('1. Mounted / 2. Updated');
 
-    return () => console.log('3.Unmounted');
-  }, []);
+    return () => console.log('3. Unmounted');
+  }, [selected]);
 
-  console.log('---- Rendering ----');
+  console.log('--- Rendering ---');
+
   return (
     <>
       <div className="mx-3 mt-10 flex p-3">
